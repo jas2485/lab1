@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3 - Conversion</title>
+</head>
+<body>
+
+<script>
+// Function to convert kg to lb
+function convertKgToLb(kg) {
+    return kg / 0.45359237;
+}
+
+// Function to convert lb to kg
+function convertLbToKg(lb) {
+    return lb * 0.45359237;
+}
+
+// Main loop to ask for user input
+let userChoice;
+do {
+    userChoice = prompt("Enter:\n1 to convert kg to lb\n2 to convert lb to kg\n3 to exit");
+
+    // Validate user input
+    if (userChoice != 1 && userChoice != 2 && userChoice != 3) {
+        alert("Invalid input. Please enter 1, 2, or 3.");
+    }
+} while (userChoice != 1 && userChoice != 2 && userChoice != 3);
+
+if (userChoice != 3) {
+    let userValue;
+    do {
+        if (userChoice == 1) {
+            userValue = prompt("Enter the value in kg to convert to lb:");
+        } else if (userChoice == 2) {
+            userValue = prompt("Enter the value in lb to convert to kg:");
+        }
+        
+        // Validate if the input is numeric and non-empty
+        if (isNaN(userValue) || userValue.trim() === "") {
+            alert("Please enter a valid numeric value.");
+        }
+    } while (isNaN(userValue) || userValue.trim() === "");
+    
+    // Switch statement to handle conversions based on user choice
+    switch (userChoice) {
+        case "1":
+            let resultKgToLb = convertKgToLb(parseFloat(userValue));
+            document.write("<p>" + userValue + " kg is equal to " + resultKgToLb.toFixed(3) + " lb.</p>");
+            break;
+        case "2":
+            let resultLbToKg = convertLbToKg(parseFloat(userValue));
+            document.write("<p>" + userValue + " lb is equal to " + resultLbToKg.toFixed(3) + " kg.</p>");
+            break;
+        default:
+            document.write("<p>You have exited the application.</p>");
+            break;
+    }
+} else {
+    document.write("<p>You have exited the application.</p>");
+}
+</script>
+
+</body>
+</html>
